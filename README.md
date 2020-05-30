@@ -1,22 +1,29 @@
-# hotel
+# Auto Cloud File Organizer
 
-> A Vue.js project
+## ファイル名に入ってる名前があるクラウドディレクトリに自動的に移動させてくれるソフト(GoodNoteと相性がいい)
 
-## Build Setup
 
-``` bash
-# install dependencies
-npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+## 想定使用
 
-# build for production with minification
-npm run build
+iPadなのでノートを作ったときにCloud管理しているディレクトリを毎回選択するのがめんどくさいとき一番浅い階層にあるファイルを自動的に名前が入ったフォルダに自動的に移動させます。
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-# Auto_Cloud_File_Organizer
+## 仕様
+- 初回の実行のときクラウドファイル内のディレクトリ関係を辞書に登録しDICT_MAP.csvとして保存します、そのため初回は少し時間がかかりますが次回以降はこれを読み込むので処理は早くなります。
+- 一番浅い階層に新規のファイルがあるときのみ実行されます。
+- フォルダの名前を全探索してそのワードが入っているPDFファイルがあればそのディレクトリに移動させる仕組みです。
+- 初期状態では一番浅い階層に.pdfがあるときに実行されます。拡張子は任意かえてください。
+- 新しいフォルダを作った場合はDICT_MAP.csvを削除して作り直してください。
+- 同じ名前のフォルダを作るとエラーが起こるので避けてください。
+## 使い方
+1. rcloneのrclone configを使って希望のクラウドファイルに接続可能な状態にします。
+2. ファイル内のremoteの部分を上記の方法で作成したものの名前に設定します。
+3. main.pyを実行するとファイルの整理が始まります。
+
+
+
+## 注意点
+- 同じ名前のフォルダを作るとエラーが起こるので避けてください。
+
+
